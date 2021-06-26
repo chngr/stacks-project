@@ -838,12 +838,10 @@ is not an equality, i.e., $f(X) \subset Z$ is not a dense subset, and
 \item the construction of the scheme theoretic image does not commute with
 restriction to open subschemes to $Y$.
 \end{enumerate}
-Namely, the immersion of Example \ref{example-thibaut} gives
-an example for both phenomena. (If $Z \to U \to X$ is as in
-Example \ref{example-thibaut}, then the scheme theoretic image
-of $Z \to X$ is $X$ and $Z$ is not topologically dense in $X$.
-Also, the scheme theoretic image of $Z = Z \cap U \to U$ is just
-$Z$ which is not equal to $U \cap X = U$.)
+In Examples, Section \ref{examples-section-scheme-theoretic-image}
+the reader finds an example for both phenomena.
+These phenomena can arise even for immersions, see
+Examples, Section \ref{examples-section-strange-immersion}.
 However, the next lemma shows that both disasters are avoided
 when the morphism is quasi-compact.
 
@@ -1716,7 +1714,7 @@ Schemes, Lemma \ref{schemes-lemma-characterize-quasi-separated}
 we see the morphism $f$ is quasi-separated. Hence by
 Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent} the
 sheaf $\mathcal{A} = f_*\mathcal{O}_X$ is a quasi-coherent sheaf
-of $\mathcal{O}_X$-algebras. Thus we have the scheme
+of $\mathcal{O}_S$-algebras. Thus we have the scheme
 $g : Y = \underline{\Spec}_S(\mathcal{A}) \to S$ over $S$.
 The identity map
 $\text{id} : \mathcal{A} = f_*\mathcal{O}_X \to f_*\mathcal{O}_X$
@@ -3048,6 +3046,17 @@ catenary. Thus $R_{\mathfrak p}$ is universally catenary.
 \end{proof}
 
 \begin{lemma}
+\label{lemma-catenary-check-irreducible}
+Let $S$ be a locally Noetherian scheme. Then $S$ is universally catenary
+if and only if the irreducible components of $S$ are universally catenary.
+\end{lemma}
+
+\begin{proof}
+Omitted. For the affine case, please see
+Algebra, Lemma \ref{algebra-lemma-catenary-check-irreducible}.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-ubiquity-uc}
 The following types of schemes are universally catenary.
 \begin{enumerate}
@@ -3921,7 +3930,7 @@ Omitted.
 \begin{lemma}
 \label{lemma-noetherian-finite-type-finite-presentation}
 \begin{slogan}
-Over a locally noetherian base, finite type is finite presentation.
+Over a locally Noetherian base, finite type is finite presentation.
 \end{slogan}
 Let $f : X \to S$ be a morphism.
 \begin{enumerate}
@@ -4077,6 +4086,9 @@ Algebra, Theorem \ref{algebra-theorem-chevalley}.
 
 \begin{theorem}[Chevalley's Theorem]
 \label{theorem-chevalley}
+\begin{reference}
+\cite[IV, Theorem 1.8.4]{EGA}
+\end{reference}
 Let $f : X \to Y$ be a morphism of schemes.
 Assume $f$ is quasi-compact and locally of finite presentation.
 Then the image of every locally constructible subset is locally constructible.
@@ -4693,13 +4705,20 @@ $$
 \end{matrix}
 \right\}
 $$
+If $Z \subset X$ is such a closed subscheme, every morphism of schemes
+$g : Y \to X$ with $g(Y) \subset Z$ set theoretically factors (scheme
+theoretically) through $Z$.
 \end{lemma}
 
 \begin{proof}
-The affine case is
+The affine case of the bijection is
 Algebra, Lemma \ref{algebra-lemma-pure-open-closed-specializations}.
-In general the lemma follows by covering $X$ by affines and glueing.
-Details omitted.
+For general schemes $X$ the bijection follows by covering $X$ by affines
+and glueing. Details omitted. For the final assertion, observe that the
+projection $Z \times_{X, g} Y \to Y$ is a flat
+(Lemma \ref{lemma-base-change-flat}) closed immersion which
+is bijective on underlying topological spaces and hence must be
+an isomorphism by the bijection esthablished in the first part of the proof.
 \end{proof}
 
 \begin{lemma}
@@ -5283,6 +5302,9 @@ fibres and is flat of finite presentation.
 
 \begin{lemma}
 \label{lemma-flat-finite-presentation-CM-fibres-relative-dimension}
+\begin{slogan}
+Cohen-Macaulay morphisms decompose into clopens of pure relative dimension
+\end{slogan}
 Let $f : X \to S$ be a morphism of schemes.
 Assume that
 \begin{enumerate}
@@ -5724,8 +5746,8 @@ be a commutative diagram of morphisms of schemes. Assume that
 \begin{enumerate}
 \item $f$ is surjective and syntomic,
 \item $p$ is syntomic, and
-\item $q$ is locally of finite presentation\footnote{In fact, if
-$f$ is surjective, flat, and of finite presentation and $p$ is syntomic,
+\item $q$ is locally of finite presentation\footnote{In fact, if $f$ is
+surjective, flat, and locally of finite presentation and $p$ is syntomic,
 then both $q$ and $f$ are syntomic, see
 Descent, Lemma \ref{descent-lemma-syntomic-permanence}.}.
 \end{enumerate}
@@ -6499,6 +6521,130 @@ Algebra, Lemma \ref{algebra-lemma-application-NL}.
 \end{proof}
 
 
+
+
+
+
+
+
+
+
+\section{Finite order differential operators}
+\label{section-differential-operators}
+
+\noindent
+We suggest the reader take a look at the corresponding section
+in the chapter on commutative algebra
+(Algebra, Section \ref{algebra-section-differential-operators})
+and the corresponding section in the chapter on sheaves of modules
+(Modules, Section \ref{modules-section-differential-operators}).
+
+\begin{lemma}
+\label{lemma-affine-case-differential-operators}
+Let $R \to A$ be a ring map. Denote $f : X \to S$ the corresponding
+morphism of affine schemes. Let $\mathcal{F}$ and $\mathcal{G}$
+be $\mathcal{O}_X$-modules. If $\mathcal{F}$ is quasi-coherent then
+the map
+$$
+\text{Diff}^k_{X/S}(\mathcal{F}, \mathcal{G}) \to
+\text{Diff}^k_{A/R}(\Gamma(X, \mathcal{F}), \Gamma(X, \mathcal{G}))
+$$
+sending a differential operator to its action on global sections
+is bijective.
+\end{lemma}
+
+\begin{proof}
+Write $\mathcal{F} = \widetilde{M}$ for some $A$-module $M$. Set
+$N = \Gamma(X, \mathcal{G})$. Let $D : M \to N$ be a differential
+operator of order $k$. We have to show there exists
+a unique differential operator $\mathcal{F} \to \mathcal{G}$ of order $k$
+which gives rise to $D$ on global sections. Let $U = D(f) \subset X$
+be a standard affine open. Then $\mathcal{F}(U) = M_f$ is the localization.
+By Algebra, Lemma \ref{algebra-lemma-invert-system-differential-operators}
+the differential operator $D$ extends to a unique differential operator
+$$
+D_f : \mathcal{F}(U) = \widetilde{M}(U) = M_f \to N_f = \widetilde{N}(U)
+$$
+The uniqueness shows that these maps $D_f$ glue to give a map of sheaves
+$\widetilde{M} \to \widetilde{N}$ on the basis of all standard opens
+of $X$. Hence we get a unique map of sheaves
+$\widetilde{D} : \widetilde{M} \to \widetilde{N}$ agreeing with these maps
+by the material in Sheaves, Section \ref{sheaves-section-bases}.
+Since $\widetilde{D}$ is given by differential operators of order $k$ on
+the standard opens, we find that $\widetilde{D}$ is a differential operator
+of order $k$ (small detail omitted).
+Finally, we can post-compose with the canonical $\mathcal{O}_X$-module map
+$c : \widetilde{N} \to \mathcal{G}$
+(Schemes, Lemma \ref{schemes-lemma-compare-constructions})
+to get $c \circ \widetilde{D} : \mathcal{F} \to \mathcal{G}$
+which is a differential operator of order $k$ by
+Modules, Lemma \ref{modules-lemma-composition-differential-operators}.
+This proves existence. We omit the proof of uniqueness.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-differential-operators}
+Let $a : X \to S$ and $b : Y \to S$ be morphisms of schemes.
+Let $\mathcal{F}$ and $\mathcal{F}'$ be quasi-coherent $\mathcal{O}_X$-modules.
+Let $D : \mathcal{F} \to \mathcal{F}'$ be a differential operator
+of order $k$ on $X/S$. Let $\mathcal{G}$ be a quasi-coherent
+$\mathcal{O}_Y$-module. Then there is a unique differential
+operator
+$$
+D' :
+\text{pr}_1^*\mathcal{F} \otimes_{\mathcal{O}_{X \times_S Y}}
+\text{pr}_2^*\mathcal{G}
+\longrightarrow
+\text{pr}_1^*\mathcal{F}' \otimes_{\mathcal{O}_{X \times_S Y}}
+\text{pr}_2^*\mathcal{G}
+$$
+of order $k$ on $X \times_S Y / Y$ such that
+$
+D'(s \otimes t) = D(s) \otimes t
+$
+for local sections $s$ of $\mathcal{F}$ and $t$ of $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+In case $X$, $Y$, and $S$ are affine, this follows, via
+Lemma \ref{lemma-affine-case-differential-operators},
+from the corresponding algebra result, see
+Algebra, Lemma \ref{algebra-lemma-base-change-differential-operators}.
+In general, one uses coverings by affines
+(for example as in Schemes, Lemma
+\ref{schemes-lemma-affine-covering-fibre-product})
+to construct $D'$ globally. Details omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-base-change-differential-operators}
+Let $a : X \to S$ and $b : Y \to S$ be morphisms of schemes.
+Denote $p : X \times_S Y \to X$ and $q : X \times_S Y \to Y$ the
+projections. In this remark, given an $\mathcal{O}_X$-module $\mathcal{F}$
+and an $\mathcal{O}_Y$-module $\mathcal{G}$ let us set
+$$
+\mathcal{F} \boxtimes \mathcal{G} =
+p^*\mathcal{F} \otimes_{\mathcal{O}_{X \times_S Y}} q^*\mathcal{G}
+$$
+Denote $\mathcal{A}_{X/S}$ the additive category
+whose objects are quasi-coherent $\mathcal{O}_X$-modules and
+whose morphisms are differential operators of finite order on $X/S$.
+Similarly for $\mathcal{A}_{Y/S}$ and $\mathcal{A}_{X \times_S Y/S}$.
+The construction of Lemma \ref{lemma-base-change-differential-operators}
+determines a functor
+$$
+\boxtimes : 
+\mathcal{A}_{X/S} \times \mathcal{A}_{Y/S} \longrightarrow
+\mathcal{A}_{X \times_S Y/S},
+\quad
+(\mathcal{F}, \mathcal{G}) \longmapsto \mathcal{F} \boxtimes \mathcal{G}
+$$
+which is bilinear on morphisms. If $X = \Spec(A)$, $Y = \Spec(B)$, and
+$S = \Spec(R)$, then via the identification of quasi-coherent sheaves
+with modules this functor is given by $(M, N) \mapsto M \otimes_R N$
+on objects and sends the morphism $(D, D') : (M, N) \to (M', N')$ to
+$D \otimes D' : M \otimes_R N \to M' \otimes_R N'$.
+\end{remark}
 
 
 
@@ -8044,7 +8190,7 @@ $\mathbf{A}_S^d \to S$.
 Smooth schemes are \'etale-locally like affine spaces.
 \end{slogan}
 Let $\varphi : X \to Y$ be a morphism of schemes. Let $x \in X$.
-Let $V \subset Y$ be an affine open neighbourhood of $f(x)$.
+Let $V \subset Y$ be an affine open neighbourhood of $\varphi(x)$.
 If $\varphi$ is smooth at $x$, then there exists an integer $d \geq 0$
 and an affine open $U \subset X$ with $x \in U$ and
 $\varphi(U) \subset V$ such that there exists a commutative diagram
@@ -8668,35 +8814,48 @@ in (4) is used to guarantee that $f_*\mathcal{L}$ is quasi-coherent via
 Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}.
 
 \medskip\noindent
-Assume (2).
-We will prove (4).
+Assume (2). We will prove (4).
 Let $S = \bigcup V_j$ be an open covering as in (2).
 Set $X_j = f^{-1}(V_j)$ and $f_j : X_j \to V_j$ the
 restriction of $f$. We see that $f$ is separated by
 Lemma \ref{lemma-relatively-very-ample-separated} (as being
-separated is local on the base). Consider the map
-$\psi : f^*f_*\mathcal{L} \to \mathcal{L}$. On each $V_j$ there exists a
-quasi-coherent sheaf $\mathcal{E}_j$ and an embedding
-$i : X_j \to \mathbf{P}(\mathcal{E}_j)$ with
-$\mathcal{L}_{X_j} \cong i^*\mathcal{O}_{\mathbf{P}(\mathcal{E}_j)}(1)$.
-In other words there is a map $\mathcal{E}_j \to (f_*\mathcal{L})|_{X_j}$
+separated is local on the base). By assumption there exists a
+quasi-coherent $\mathcal{O}_{V_j}$-module $\mathcal{E}_j$ and an immersion
+$i_j : X_j \to \mathbf{P}(\mathcal{E}_j)$ with
+$\mathcal{L}|_{X_j} \cong i_j^*\mathcal{O}_{\mathbf{P}(\mathcal{E}_j)}(1)$.
+The morphism $i_j$ corresponds to a surjection
+$f_j^*\mathcal{E}_j \to \mathcal{L}|_{X_j}$, see
+Constructions, Section \ref{constructions-section-projective-bundle}.
+This map is adjoint to a map $\mathcal{E}_j \to f_*\mathcal{L}|_{V_j}$
 such that the composition
 $$
 f_j^*\mathcal{E}_j \to (f^*f_*\mathcal{L})|_{X_j} \to \mathcal{L}|_{X_j}
 $$
-is surjective. Hence we conclude that $\psi$ is surjective. Let
+is surjective. We conclude that
+$\psi : f^*f_*\mathcal{L} \to \mathcal{L}$ is surjective. Let
 $r_{\mathcal{L}, \psi} : X \to \mathbf{P}(f_*\mathcal{L})$ be the
-associated morphism.
-Using the maps $\mathcal{E}_j \to (f_*\mathcal{L})|_{X_j}$
-we see that there is a factorization
+associated morphism. We still have to show that $r_{\mathcal{L}, \psi}$
+is an immersion; we urge the reader to prove this for themselves.
+The $\mathcal{O}_{V_j}$-module map $\mathcal{E}_j \to f_*\mathcal{L}|_{V_j}$
+determines a homomorphism on symmetric algebras, which in turn defines a
+morphism
+$$
+\mathbf{P}(f_*\mathcal{L}|_{V_j}) \supset U_j \longrightarrow
+\mathbf{P}(\mathcal{E}_j)
+$$
+where $U_j$ is the open subscheme of
+Constructions, Lemma \ref{constructions-lemma-morphism-relative-proj}.
+The compatibility of $\psi$ with $\mathcal{E}_j \to f_*\mathcal{L}|_{V_j}$
+shows that $r_{\mathcal{L}, \psi}(X_j) \subset U_j$ and that there is a
+factorization
 $$
 \xymatrix{
-X_j \ar[r]^-{r_{\mathcal{L}, \psi}} &
-\mathbf{P}(f_*\mathcal{L})|_{V_j} \ar[r] &
+X_j \ar[r]^-{r_{\mathcal{L}, \psi}} & U_j \ar[r] &
 \mathbf{P}(\mathcal{E}_j)
 }
 $$
-which shows that $r_{\mathcal{L}, \psi}$ is an immersion.
+We omit the verification.
+This shows that $r_{\mathcal{L}, \psi}$ is an immersion.
 
 \medskip\noindent
 At this point we see that (1), (2) and (4) are equivalent.
@@ -9459,31 +9618,6 @@ of universally closed (resp.\ proper) morphisms
 \end{proof}
 
 \noindent
-The following lemma says that the image of a proper scheme (in a separated
-scheme of finite type over the base) is proper.
-
-\begin{lemma}
-\label{lemma-image-proper-is-proper}
-Let $S$ be a scheme.
-Let $f : X \to Y$ be a morphism of schemes over $S$.
-If $X$ is universally closed over $S$ and $f$ is surjective then
-$Y$ is universally closed over $S$. In particular, if also $Y$ is
-separated and of finite type over $S$, then $Y$ is proper over $S$.
-\end{lemma}
-
-\begin{proof}
-Assume $X$ is universally closed and $f$ surjective.
-Denote $p : X \to S$, $q : Y \to S$ the structure morphisms.
-Let $S' \to S$ be a morphism of schemes. The base change
-$f' : X_{S'} \to Y_{S'}$ is surjective
-(Lemma \ref{lemma-base-change-surjective}), and the base
-change $p' : X_{S'} \to S'$ is closed.
-If $T \subset Y_{S'}$ is closed, then $(f')^{-1}(T) \subset X_{S'}$
-is closed, hence $p'((f')^{-1}(T)) = q'(T)$ is closed.
-So $q'$ is closed.
-\end{proof}
-
-\noindent
 The proof of the following lemma is due to Bjorn Poonen, see
 \href{https://mathoverflow.net/questions/23337/is-a-universally-closed-morphism-of-schemes-quasi-compact/23528#23528}{this location}.
 
@@ -9549,6 +9683,34 @@ for $i \in I \setminus J$ we see that $z \in Z$. On the other hand
 $f_T(z) = t' \not \in V(g)$ which contradicts $f_T(Z) \subset V(g)$.
 Thus the assumption ``$f_T(Z)$ closed'' is wrong and we conclude indeed
 that $f_T$ is not closed, as desired.
+\end{proof}
+
+\noindent
+The following lemma says that the image of a proper scheme (in a separated
+scheme of finite type over the base) is proper.
+
+\begin{lemma}
+\label{lemma-image-proper-is-proper}
+Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of schemes over $S$.
+If $X$ is universally closed over $S$ and $f$ is surjective then
+$Y$ is universally closed over $S$. In particular, if also $Y$ is
+separated and locally of finite type over $S$, then $Y$ is proper over $S$.
+\end{lemma}
+
+\begin{proof}
+Assume $X$ is universally closed and $f$ surjective.
+Denote $p : X \to S$, $q : Y \to S$ the structure morphisms.
+Let $S' \to S$ be a morphism of schemes. The base change
+$f' : X_{S'} \to Y_{S'}$ is surjective
+(Lemma \ref{lemma-base-change-surjective}), and the base
+change $p' : X_{S'} \to S'$ is closed.
+If $T \subset Y_{S'}$ is closed, then $(f')^{-1}(T) \subset X_{S'}$
+is closed, hence $p'((f')^{-1}(T)) = q'(T)$ is closed.
+So $q'$ is closed. This proves the first statement.
+Thus $Y \to S$ is quasi-compact by
+Lemma \ref{lemma-universally-closed-quasi-compact}
+and hence $Y \to S$ is proper by definition
+if in addition $Y \to S$ is locally of finite type and separated.
 \end{proof}
 
 \begin{lemma}
@@ -10303,7 +10465,7 @@ then $f$ is projective.
 \end{lemma}
 
 \begin{proof}
-Choose an embedding $X \to \mathbf{P}(\mathcal{E})$ where $\mathcal{E}$
+Choose a closed immersion $X \to \mathbf{P}(\mathcal{E})$ where $\mathcal{E}$
 is a quasi-coherent, finite type $\mathcal{O}_S$-module. Then
 we get a morphism $X \to \mathbf{P}(\mathcal{E}) \times_S Y$.
 This morphism is a closed immersion because it is the composition
@@ -12428,7 +12590,7 @@ and $S$ the set of odd integers give a counter example.
 \begin{lemma}
 \label{lemma-birational-birational}
 Let $f : X \to Y$ be a birational morphism of schemes having finitely
-may irreducible components over a base scheme $S$. Assume one of the
+many irreducible components over a base scheme $S$. Assume one of the
 following conditions is satisfied
 \begin{enumerate}
 \item $f$ is locally of finite type and $Y$ reduced,
@@ -14037,6 +14199,31 @@ $A/\mathfrak q_i \subset A'_i$ are finite. Hence $A \to \prod A'_i$
 is a finite ring map and we win.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-normalization-geom-unibranch-univ-homeo}
+Let $X$ be an irreducible, geometrically unibranch scheme.
+The normalization morphism $\nu : X^\nu \to X$ is a universal
+homeomorphism.
+\end{lemma}
+
+\begin{proof}
+We have to show that $\nu$ is integral, universally injective,
+and surjective, see Lemma \ref{lemma-universal-homeomorphism}.
+By Lemma \ref{lemma-normalization-normal} the morphism $\nu$
+is integral. Let $x \in X$ and set $A = \mathcal{O}_{X, x}$.
+Since $X$ is irreducible we see that $A$ has a single
+minimal prime $\mathfrak p$ and $A_{red} = A/\mathfrak p$.
+By Lemma \ref{lemma-stalk-normalization} the stalk
+$A' = (\nu_*\mathcal{O}_{X^\nu})_x$ is the integral closure of
+$A$ in the fraction field of $A_{red}$. By
+More on Algebra, Definition \ref{more-algebra-definition-unibranch}
+we see that $A'$ has a single prime $\mathfrak m'$ lying
+over $\mathfrak m_x \subset A$ and $\kappa(\mathfrak m')/\kappa(x)$
+is purely inseparable. Hence $\nu$ is bijective (hence surjective)
+and universally injective by Lemma \ref{lemma-universally-injective}.
+\end{proof}
+
+
 
 
 
@@ -14101,6 +14288,9 @@ the set of points where a morphism is quasi-finite is open.
 
 \begin{lemma}
 \label{lemma-quasi-finite-points-open}
+\begin{slogan}
+The locally quasi-finite locus of a morphism is open
+\end{slogan}
 Let $f : X \to S$ be a morphism of schemes.
 The set of points of $X$ where $f$ is quasi-finite is an open
 $U \subset X$. The induced morphism $U \to S$ is locally quasi-finite.
@@ -14266,33 +14456,6 @@ and hence the fibres of $f$ all have degree $d$.
 \end{proof}
 
 \begin{lemma}
-\label{lemma-bound-degree-in-nbhd-generic-point}
-Let $f : X \to Y$ be a morphism schemes. Assume
-\begin{enumerate}
-\item $f$ is locally of finite type,
-\item $f$ is either quasi-compact or separated,
-\item $f$ is generically finite, i.e., one of (1) -- (5) of
-Lemma \ref{lemma-finite-degree} holds.
-\end{enumerate}
-Then there is a nonempty open $V \subset Y$ such that
-$f^{-1}(V) \to V$ is finite locally free of degree $\deg(X/Y)$.
-In particular, the degrees of the fibres of $f^{-1}(V) \to V$
-are bounded by $\deg(X/Y)$.
-\end{lemma}
-
-\begin{proof}
-We may choose $V$ such that $f^{-1}(V) \to V$ is finite.
-Then we may shrink $V$ and assume that $f^{-1}(V) \to V$
-is flat and of finite presentation by generic flatness
-(Proposition \ref{proposition-generic-flatness}).
-Then the morphism is finite locally free by
-Lemma \ref{lemma-finite-flat}.
-Since $V$ is irreducible the morphism has a fixed degree.
-The final statement follows from this and
-Lemma \ref{lemma-finite-locally-free-universally-bounded}.
-\end{proof}
-
-\begin{lemma}
 \label{lemma-composition-universally-bounded}
 A composition of morphisms with universally bounded fibres
 is a morphism with universally bounded fibres. More precisely,
@@ -14326,8 +14489,8 @@ example because $Y_z$ is a disjoint union of $1$-point schemes, or by
 Algebra, Lemmas \ref{algebra-lemma-finite-dimensional-algebra} and
 \ref{algebra-lemma-artinian-finite-length}.
 So we see that
-$\dim_k(B) = \sum_{\mathfrak m}(B_{\mathfrak m})$ and
-$\dim_k(A) = \sum_{\mathfrak m}(A_{\mathfrak m})$ where
+$\dim_k(B) = \sum_{\mathfrak m} \dim_k(B_{\mathfrak m})$ and
+$\dim_k(A) = \sum_{\mathfrak m} \dim_k(A_{\mathfrak m})$ where
 in both cases $\mathfrak m$ runs over the maximal ideals of
 $B$ (not of $A$). By the above, and Nakayama's Lemma
 (Algebra, Lemma \ref{algebra-lemma-NAK})
@@ -14336,7 +14499,7 @@ $B_{\mathfrak m}^{\oplus n}$ as a $B_{\mathfrak m}$-module. Hence
 $\dim_k(A_{\mathfrak m}) \leq n \dim_k(B_{\mathfrak m})$. Putting
 everything together we see that
 $$
-\dim_k(A) = \sum\nolimits_{\mathfrak m}(A_{\mathfrak m})
+\dim_k(A) = \sum\nolimits_{\mathfrak m} \dim_ta	(A_{\mathfrak m})
 \leq \sum\nolimits_{\mathfrak m} n \dim_k(B_{\mathfrak m})
 = n \dim_k(B) \leq nm
 $$

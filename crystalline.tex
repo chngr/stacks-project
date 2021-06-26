@@ -732,8 +732,12 @@ $\text{Cris}(C/A) \to \text{CRIS}(C/A)$ commutes with them.
 \end{lemma}
 
 \begin{proof}
-The empty product is $(C, 0, \emptyset)$. If $(B_t, J_t, \delta_t)$ is a
-family of objects of $\text{CRIS}(C/A)$ then we can form the product
+The empty product, i.e., the final object in the category of divided
+power thickenings of $C$ over $(A, I, \gamma)$, is the zero ring viewed
+as an $A$-algebra endowed with the zero ideal and the unique divided powers
+on the zero ideal and finally endowed with the unique homomorphism of $C$ to
+the zero ring. If $(B_t, J_t, \delta_t)$ is a family of objects of
+$\text{CRIS}(C/A)$ then we can form the product
 $(\prod B_t, \prod J_t, \prod \delta_t)$ as in
 Divided Power Algebra, Lemma \ref{dpa-lemma-colimits}.
 The map $C \to \prod B_t/\prod J_t = \prod B_t/J_t$ is clear.
@@ -919,12 +923,12 @@ $$
 \text{d}_{B/A, \delta} : B \to \Omega_{B/A, \delta}
 $$
 such that any divided power $A$-derivation $\theta : B \to M$ is equal to
-$\theta = \xi \circ d_{B/A, \delta}$ for some $B$-linear map
-$\Omega_{B/A, \delta} \to M$. If $(A, I, \gamma) \to (B, J, \delta)$
+$\theta = \xi \circ d_{B/A, \delta}$ for some unique $B$-linear map
+$\xi : \Omega_{B/A, \delta} \to M$. If $(A, I, \gamma) \to (B, J, \delta)$
 is a homomorphism of divided power rings, then we can forget the
 divided powers on $A$ and consider the divided power derivations of
-$B$ over $A$. Here are some basic properties of the divided power
-module of differentials.
+$B$ over $A$. Here are some basic properties of the universal
+module of (divided power) differentials.
 
 \begin{lemma}
 \label{lemma-omega}
@@ -1986,7 +1990,7 @@ In this case the comparison mappings (\ref{equation-comparison})
 define a comparison map
 \begin{equation}
 \label{equation-comparison-modules}
-c_f : f^*\mathcal{F}_T \longrightarrow \mathcal{F}_{T'}
+c_f : f^*\mathcal{F}_{T'} \longrightarrow \mathcal{F}_T
 \end{equation}
 of $\mathcal{O}_T$-modules.
 
@@ -2903,7 +2907,9 @@ $$
 \xi_i(j) = x_i \otimes 1 \otimes \ldots \otimes 1 -
 1 \otimes \ldots \otimes 1 \otimes x_i \otimes 1 \otimes \ldots \otimes 1
 $$
-for $j = 1, \ldots, n$.
+for $j = 1, \ldots, n$ where the second $x_i$ is placed in the $j + 1$st
+slot; recall that $D(n)$ is constructed starting with the
+$n + 1$-fold tensor product of $P$ over $A$.
 \end{lemma}
 
 \begin{proof}
@@ -3189,7 +3195,7 @@ also holds for the corresponding functor towards pairs over $D'$.
 Before we embark on the proof we briefly explain how to formulate
 condition (\ref{item-topologically-quasi-nilpotent}) for the case of
 pairs $(M', \nabla')$ over $D'$. Since $A \to P'$ is smooth
-the $P$-module $\Omega_{P'/A}$ is finite projective. Thus we can
+the $P'$-module $\Omega_{P'/A}$ is finite projective. Thus we can
 choose a map $\Omega_{P'/A} \to \bigoplus_{i = 1, \ldots, n} P'$
 wich identifies $\Omega_{P'/A}$ with a direct summand of the target.
 This determines a map $\Omega_{D'} \to \bigoplus_{i = 1, \ldots, n} D'$
@@ -3434,8 +3440,8 @@ associated to the cosimplicial abelian group $[n] \mapsto \mathcal{F}(X^n)$.
 \end{lemma}
 
 \begin{proof}
-Note that $H^q(X^p, \mathcal{F}) = 0$ for all $q > 0$ as sheaves are
-presheaves on $\mathcal{C}$. The assumption on $X$ is that $h_X \to *$
+Note that $H^q(X^p, \mathcal{F}) = 0$ for all $q > 0$ as any presheaf is a
+sheaf on $\mathcal{C}$. The assumption on $X$ is that $h_X \to *$
 is surjective. Using that $H^q(X, \mathcal{F}) = H^q(h_X, \mathcal{F})$ and
 $H^q(\mathcal{C}, \mathcal{F}) = H^q(*, \mathcal{F})$ we see that our
 statement is a special case of

@@ -1419,13 +1419,18 @@ Hence $X_{k'}$ is irreducible. Hence (4) implies (1).
 
 \begin{lemma}
 \label{lemma-geometrically-irreducible-function-field}
-Let $X$ be a geometrically irreducible scheme over the field $k$.
-Let $\xi \in X$ be its generic point. Then $\kappa(\xi)$ is
-geometrically irreducible over $k$.
+Let $X$ be an irreducible scheme over the field $k$. Let $\xi \in X$
+be its generic point. The following are equivalent
+\begin{enumerate}
+\item $X$ is geometrically irreducible over $k$, and
+\item $\kappa(\xi)$ is geometrically irreducible over $k$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-Combining
+Assume (1). Recall that $\mathcal{O}_{X, \xi}$ is the filtered
+colimit of $\mathcal{O}_X(U)$ where $U$ runs over the nonempty
+open affine subschemes of $X$. Combining
 Lemma \ref{lemma-geometrically-irreducible-local}
 and
 Algebra, Lemma \ref{algebra-lemma-subalgebra-geometrically-irreducible}
@@ -1435,6 +1440,16 @@ locally nilpotent kernel (see
 Algebra, Lemma \ref{algebra-lemma-minimal-prime-reduced-ring})
 it follows that $\kappa(\xi)$ is geometrically irreducible, see
 Algebra, Lemma \ref{algebra-lemma-p-ring-map}.
+
+\medskip\noindent
+Assume (2). We may assume that $X$ is reduced. Let $U \subset X$ be
+a nonempty affine open. Then $U = \Spec(A)$ where $A$ is a domain
+with fraction field $\kappa(\xi)$. Thus $A$ is a $k$-subalgebra
+of a geometrically irreducible $k$-algebra. Hence by
+Algebra, Lemma \ref{algebra-lemma-subalgebra-geometrically-irreducible}
+we see that $A$ is geometrically irreducible over $k$.
+By Lemma \ref{lemma-geometrically-irreducible-local} we conclude
+that $X$ is geometrically irreducible over $k$.
 \end{proof}
 
 \begin{lemma}
@@ -1584,6 +1599,33 @@ is a nonempty union of irreducible components, see
 Lemma \ref{lemma-inverse-image-irreducible}.
 Each of these necessarily maps onto $T$ by the first part.
 Hence the map is surjective.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-irreducible-dense-rational-points-geometrically-irreducible}
+Let $k$ be a field. Let $X$ be a scheme over $k$. If $X$ is irreducible
+and has a dense set of $k$-rational points, then $X$ is geometrically
+irreducible.
+\end{lemma}
+
+\begin{proof}
+Let $k'/k$ be a finite extension of fields and let $Z, Z' \subset X_{k'}$
+be irreducible components. It suffices to show $Z = Z'$, see
+Lemma \ref{lemma-characterize-geometrically-irreducible}.
+By Lemma \ref{lemma-image-irreducible} we have $p(Z) = p(Z') = X$
+where $p : X_{k'} \to X$ is the projection. If $Z \not = Z'$
+then $Z \cap Z'$ is nowhere dense in $X_{k'}$ and hence $p(Z \cap Z')$
+is not dense by
+Morphisms, Lemma \ref{morphisms-lemma-image-nowhere-dense-finite};
+here we also use that $p$ is a finite morphism as the base change
+of the finite morphism $\Spec(k') \to \Spec(k)$, see
+Morphisms, Lemma \ref{morphisms-lemma-base-change-finite}.
+Thus we can pick a $k$-rational point $x \in X$ with
+$x \not \in p(Z \cap Z')$. Since the residue field of $x$ is $k$
+we see that $p^{-1}(\{x\}) = \{x'\}$ where $x' \in X_{k'}$
+is a point whose residue field is $k'$. Since $x \in p(Z) = p(Z')$
+we conclude that $x' \in Z \cap Z'$ which is the contradiction
+we were looking for.
 \end{proof}
 
 \begin{lemma}
@@ -4788,6 +4830,26 @@ separated as a scheme finite over a separated scheme.
 \end{proof}
 
 \begin{lemma}
+\label{lemma-normalize-projective}
+Let $k$ be a field. Let $X$ be a proper scheme over $k$.
+Let $\nu : X^\nu \to X$ be the normalization morphism, see
+Morphisms, Definition \ref{morphisms-definition-normalization}.
+Then $X^\nu$ is proper over $k$. If $X$ is projective over $k$,
+then $X^\nu$ is projective over $k$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-normalization-locally-algebraic} the morphism $\nu$
+is finite. Hence $X^\nu$ is proper over $k$ by
+Morphisms, Lemmas \ref{morphisms-lemma-finite-proper} and
+\ref{morphisms-lemma-composition-proper}.
+The morphism $\nu$ is projective by
+Morphisms, Lemma \ref{morphisms-lemma-finite-projective}
+and hence if $X$ is projective over $k$, then $X^\nu$ is projective over $k$
+by Morphisms, Lemma \ref{morphisms-lemma-composition-projective}.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-relative-normalization-finite}
 Let $k$ be a field. Let $f : Y \to X$ be a quasi-compact
 morphism of locally algebraic schemes over $k$. Let $X'$
@@ -5247,7 +5309,7 @@ We omit the verification that each of (2), (3), (4) implies (1).
 
 
 
-\section{K\"unneth formula}
+\section{K\"unneth formula, I}
 \label{section-kunneth}
 
 \noindent
@@ -8059,7 +8121,7 @@ Algebra, Lemma \ref{algebra-lemma-characterize-dvr}.
 Let $A$ be a reduced Nagata local ring of dimension $1$.
 Let $A \to A'$ be as in Lemma \ref{lemma-pre-delta-invariant}.
 Let $A^h$, $A^{sh}$, resp.\ $A^\wedge$
-be the henselization, strict henselization, reps.\ completion of $A$.
+be the henselization, strict henselization, resp.\ completion of $A$.
 Then $A^h$, $A^{sh}$, resp. $A^\wedge$ is a reduced Nagata local
 ring of dimension $1$ and
 $A' \otimes_A A^h$, $A' \otimes_A A^{sh}$, resp. $A' \otimes_A A^\wedge$
@@ -9021,6 +9083,59 @@ are discrete valuation rings by
 Morphisms, Lemma
 \ref{morphisms-lemma-relative-normalization-normal-codim-1}.
 Then $X \to X'$ and $\{x'_1, \ldots, x'_m\}$ is as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dim-1-projective-completion-after-insep}
+Let $X$ be a separated scheme of finite type over $k$ with $\dim(X) \leq 1$.
+Then there exists a commutative diagram
+$$
+\xymatrix{
+\overline{Y}_1 \amalg \ldots \amalg \overline{Y}_n \ar[rd] &
+Y_1 \amalg \ldots \amalg Y_n \ar[r]_-\nu \ar[d] \ar[l]^j &
+X_{k'} \ar[r] \ar[d] &
+X \ar[d]^f \\
+& \Spec(k'_1) \amalg \ldots \amalg \Spec(k'_n) \ar[r] &
+\Spec(k') \ar[r] &
+\Spec(k)
+}
+$$
+of schemes with the following properties:
+\begin{enumerate}
+\item $k'/k$ is a finite purely inseparable extension of fields,
+\item $\nu$ is the normalization of $X_{k'}$,
+\item $j$ is an open immersion with dense image,
+\item $k'_i/k'$ is a finite separable extension for $i = 1, \ldots, n$,
+\item $\overline{Y}_i$ is smooth, projective, geometrically irreducible
+dimension $\leq 1$ over $k'_i$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As we may replace $X$ by its reduction, we may and do assume $X$ is reduced.
+Choose $X \to \overline{X}$ as in
+Lemma \ref{lemma-reduced-dim-1-projective-completion}.
+If we can show the lemma for $\overline{X}$, then the lemma follows
+for $X$ (details omitted).
+Thus we may and do assume $X$ is projective.
+
+\medskip\noindent
+Choose $k'/k$ finite purely inseparable such that the normalization of
+$X_{k'}$ is geometrically normal over $k'$, see
+Lemma \ref{lemma-finite-extension-geometrically-normal}.
+Denote $Y = (X_{k'})^\nu$ the normalization; for properties
+of the normalization, see Section \ref{section-normalization}.
+Then $Y$ is geometrically regular as normal and regular are the same
+in dimension $\leq 1$, see
+Properties, Lemma \ref{properties-lemma-normal-dimension-1-regular}.
+Hence $Y$ is smooth over $k'$ by
+Lemma \ref{lemma-geometrically-regular-smooth}.
+Let $Y = Y_1 \amalg \ldots \amalg Y_n$ be the decomposition
+of $Y$ into irreducible components.
+Set $k'_i = \Gamma(Y_i, \mathcal{O}_{Y_i})$.
+These are finite separable extensions of $k'$ by
+Lemma \ref{lemma-proper-geometrically-reduced-global-sections}.
+The proof is finished by Lemma \ref{lemma-baby-stein}.
 \end{proof}
 
 \noindent
@@ -10514,11 +10629,13 @@ the immersion $\Spec(c') \circ \Spec(a) = \Spec(b) \circ \Spec(c)$, see
 Morphisms, Lemma \ref{morphisms-lemma-immersion-permanence}.
 \end{proof}
 
-\noindent
-Let us introduce some notation. Let $k$ be a field, let $X$ be a scheme
-over $k$, let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module,
-let $V$ be a finite dimensional $k$-vector space, and let
-$\psi : V \to \Gamma(X, \mathcal{L})$ be a $k$-linear map.
+\begin{situation}
+\label{situation-family-divisors}
+Let $k$ be a field,
+let $X$ be a scheme over $k$,
+let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module,
+let $V$ be a finite dimensional $k$-vector space, and
+let $\psi : V \to \Gamma(X, \mathcal{L})$ be a $k$-linear map.
 Say $\dim(V) = r$ and we have a basis $v_1, \ldots, v_r$ of $V$.
 Then we obtain a ``universal divisor''
 $$
@@ -10545,31 +10662,34 @@ In a formula:
 $$
 H_v = H_{univ, v} = Z(\psi(v))
 $$
-We will denote this common value by $H_v$ as indicated.
-
-\medskip\noindent
-Let $P$ be a property of vectors $v \in V \otimes_k k'$ for $k'/k$ an
-arbitrary field extension. We say $P$ {\it holds for a general}
+We will denote this common value by $H_v$ as indicated. Finally, in
+this situation let $P$ be a property of vectors $v \in V \otimes_k k'$
+for $k'/k$ an arbitrary field extension\footnote{For example we could
+consider the condition that $H_v$ is smooth over $k'$, or geometrically
+irreducible over $k'$.}. We say $P$ {\it holds for general}
 $v \in V \otimes_k k'$ if there exists a nonempty Zariski open
 $U \subset \mathbf{A}^r_k$ such that if $v$ corresponds to a $k'$-point
 of $U$ for any $k'/k$ then $P(v)$ holds.
+\end{situation}
 
 \begin{lemma}
 \label{lemma-bertini}
-Let $k$ be a field. Let $X$ be a smooth scheme over $k$. Let
-$\mathcal{L}$ be an invertible $\mathcal{O}_X$-module. Let
-$V$ be a finite dimensional $k$-vector space and let
-$\psi : V \to \Gamma(X, \mathcal{L})$ be a $k$-linear map
-whose image generates $\mathcal{L}$ and such that the
-corresponding morphism
+In Situation \ref{situation-family-divisors} assume
+\begin{enumerate}
+\item $X$ is smooth over $k$,
+\item the image of $\psi : V \to \Gamma(X, \mathcal{L})$
+generates $\mathcal{L}$,
+\item the corresponding morphism
 $\varphi_{\mathcal{L}, \psi} : X \to \mathbf{P}(V)$ is
-an immersion. Then for a general $v \in V \otimes_k k'$
+an immersion.
+\end{enumerate}
+Then for general $v \in V \otimes_k k'$
 the scheme $H_v$ is smooth over $k'$.
 \end{lemma}
 
 \begin{proof}
 (We observe that $X$ is separated and finite type as a locally
-closed subscheme of a projective
+closed subscheme of a projective space.)
 Let us use the notation introduced above the statement of the lemma.
 We consider the projections
 $$
@@ -10665,7 +10785,6 @@ $r - \dim \mathfrak m_x/\mathfrak m_x^2 - 1$ as desired.
 
 
 
-
 \section{Enriques-Severi-Zariski}
 \label{section-vanishing-negative}
 
@@ -10721,7 +10840,7 @@ $\mathcal{F} \otimes \mathcal{L}^{\otimes n}$.
 The image of $t$ in $\mathcal{F}_2 \otimes \mathcal{L}^{\otimes n}$
 falls into $\mathcal{F}'_2 \otimes \mathcal{L}^{\otimes n}$ because
 $n \leq n_2$. Hence for any
-$s \in \Gamma(X, \mathcal{I} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes e}$
+$s \in \Gamma(X, \mathcal{I} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes e})$
 the product $t \otimes s$ lies in
 $\mathcal{F}_1 \otimes \mathcal{L}^{\otimes n + e}$.
 Thus $t \otimes s$ has support contained in
@@ -10898,7 +11017,7 @@ from the result over the infinite field $K$ and the proof is complete.
 \label{lemma-connectedness-ample-divisor}
 Let $k$ be a field. Let $X$ be a proper scheme over $k$. Let $\mathcal{L}$
 be an ample invertible $\mathcal{O}_X$-module. Let
-$s \in \Gamma(X, \mathcal{O}_X)$. Assume
+$s \in \Gamma(X, \mathcal{L})$. Assume
 \begin{enumerate}
 \item $s$ is a regular section
 (Divisors, Definition \ref{divisors-definition-regular-section}),
@@ -10913,11 +11032,11 @@ Then the zero scheme $Z(s)$ of $s$ is connected.
 Since $s$ is a regular section, so is
 $s^n \in \Gamma(X, \mathcal{L}^{\otimes n})$ for all $n > 1$.
 Moreover, the inclusion morphism $Z(s) \to Z(s^n)$ is a bijection
-on underlying topological spaces. Hence is $Z(s)$ is disconnected,
+on underlying topological spaces. Hence if $Z(s)$ is disconnected,
 so is $Z(s^n)$. Now consider the canonical short exact sequence
 $$
 0 \to \mathcal{L}^{\otimes -n} \xrightarrow{s^n}
-\mathcal{O}_X \to \mathcal{O}_{Z(s)} \to 0
+\mathcal{O}_X \to \mathcal{O}_{Z(s^n)} \to 0
 $$
 Consider the $k$-algebra $R_n = \Gamma(X, \mathcal{O}_{Z(s^n)})$.
 If $Z(s)$ is disconnected, i.e., $Z(s^n)$ is disconnected,
@@ -10927,7 +11046,7 @@ $U, V \subset Z(s^n)$ open and nonempty (the reader may wish to consult
 Lemma \ref{lemma-proper-geometrically-reduced-global-sections}).
 Thus the map $\Gamma(X, \mathcal{O}_X) \to R_n$ cannot be an isomorphism.
 It follows that either $H^0(X, \mathcal{L}^{\otimes -n})$ or
-$H^0(X, \mathcal{L}^{\otimes -n})$ is nonzero for infinitely
+$H^1(X, \mathcal{L}^{\otimes -n})$ is nonzero for infinitely
 many positive $n$. This contradicts Lemma \ref{lemma-vanishin-h0-negative} or
 \ref{lemma-vanishin-h1-negative}
 and the proof is complete.
